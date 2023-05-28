@@ -1,0 +1,40 @@
+<odoo>
+    <record id="res_config_deta_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="101"/>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="deta_project_key" string="Deta"
+                     data-key="deta_project_key"
+                     groups="base.group_user">
+                    <h2>Deta</h2>
+                    <div class="row mt16 o_settings_container" id="zalo_config">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane">
+                                <field name="using_deta"/>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <label string="Deta Project Key" for="using_deta"/>
+                                <div class="text-muted">
+                                    Config Deta Project Key
+                                </div>
+                                <div class="content-group mt16" attrs="{'invisible': [('using_deta','=',False)]}"
+                                     id="msg_sync_deta">
+                                    <div class="mt16 text-warning">
+                                        <strong>Save</strong>
+                                        this page and come back here to set up the feature.
+                                    </div>
+                                    <label for="deta_project_key"/>
+                                    <field name="deta_project_key" attrs="{'required': [('using_deta', '=', True)]}"/>
+                                    <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
